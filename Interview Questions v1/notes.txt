@@ -1,0 +1,14 @@
+        try {
+            Integer accountTo = restTemplate.getForObject(API_BASE_URL+"accounts/"+userId,Integer.class,makeAuthEntity());
+            transfer.setAccountTo(accountTo);
+        } catch (HttpServerErrorException.InternalServerError e) {
+            System.out.println("Invalid user ID.");
+        }
+        Integer accountFrom = restTemplate.getForObject(API_BASE_URL+"accounts/"+authenticatedUser.getUser().getId(),Integer.class,makeAuthEntity());
+
+
+
+//    @RequestMapping(path = "/users/{userId}", method = RequestMethod.GET)
+//    public String getUsernameById(@PathVariable Integer userId) {
+//        return userDao.findUsernameById(userId);
+//    }
